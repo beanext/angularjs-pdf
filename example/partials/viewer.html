@@ -1,22 +1,26 @@
 <nav ng-class="getNavStyle(scroll)">
-  <button ng-click="goPrevious()"><</span></button>
-  <button ng-click="goNext()">></span></button>
+    <button ng-click="fullScreen()"><span>fullscreen</span></button>
+    <button ng-click="goPrevious()"><span><</span></button>
+    <button ng-click="goNext()"><span>></span></button>
 
-  <button ng-click="zoomIn()">+</span></button>
-  <button ng-click="zoomOut()">-</span></button>
+    <button ng-click="zoomIn()"><span>+</span></button>
+    <button ng-click="zoomOut()"><span>-</span></button>
+    <button ng-click="rotateLT()"><span>左转</span></button>
+    <button ng-click="rotateRT()"><span>右转</span></button>
 
-  <button ng-click="rotate()">90</span></button>
+    <span>Page: </span>
+    <input type="text" min=1 ng-model="pageNum">
+    <span> / {{pageCount}}</span>
 
-  <span>Page: </span>
-  <input type="text" min=1 ng-model="pageNum">
-  <span> / {{pageCount}}</span>
-
-  &nbsp;&nbsp;
-  <span>Document URL: </span>
-  <input type="url" ng-model="pdfUrl">
+    &nbsp;&nbsp;
+    <span>Document URL: </span>
+    <input type="url" ng-model="pdfUrl">
 </nav>
 
 <hr>
 
 {{loading}}
-<canvas id="pdf" class="rotate0"></canvas>
+<div style="position:relative;text-align:center;">
+    <canvas id="pdf" class="rotate0" style="margin:auto"></canvas>
+</div>
+

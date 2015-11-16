@@ -126,8 +126,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'clean',
     'jsonlint',
-    'jscs',
-    'jshint',
     'copy',
     'uglify'
   ]);

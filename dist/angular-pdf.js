@@ -150,7 +150,7 @@
                         if (Math.abs(scope.mouseScrollDelta) >= PAGE_SWITCH_THRESHOLD) {
                             var pageSwitchDirection = ( scope.mouseScrollDelta > 0) ?
                                 PageSwitchDirection.UP : PageSwitchDirection.DOWN;
-                            if ((pageSwitchDirection === PageSwitchDirection.DOWN && canvasContainer[0].scrollTop + getWindowHeight() == canvasContainer[0].scrollHeight) ||
+                            if ((pageSwitchDirection === PageSwitchDirection.DOWN && canvasContainer[0].scrollTop + getWindowHeight() >= canvasContainer[0].scrollHeight) ||
                                 (pageSwitchDirection === PageSwitchDirection.UP && canvasContainer[0].scrollTop == 0)) {
                                 var page = scope.pageToDisplay;
                                 scope.mouseScrollReset();

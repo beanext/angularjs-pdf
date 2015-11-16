@@ -3,7 +3,7 @@
 
     'use strict';
 
-    angular.module('pdf', []).directive('ngPdf', [ '$window', function ($window) {
+    angular.module('pdf', []).directive('ngPdf', ['$window', function ($window) {
         var renderTask = null;
         var pdfLoaderTask = null;
 
@@ -98,7 +98,8 @@
                                     height: scope.originBox.height + 'px',
                                     margin: '',
                                     top: '',
-                                    left: ''
+                                    left: '',
+                                    'overflow-y': ''
                                 });
                             }
                             scale = undefined;
@@ -149,7 +150,7 @@
                         if (Math.abs(scope.mouseScrollDelta) >= PAGE_SWITCH_THRESHOLD) {
                             var pageSwitchDirection = ( scope.mouseScrollDelta > 0) ?
                                 PageSwitchDirection.UP : PageSwitchDirection.DOWN;
-                            if ((pageSwitchDirection === PageSwitchDirection.DOWN && canvasContainer[0].scrollTop + getWindowHeight() == canvasContainer[0].scrollHeight) ||
+                            if ((pageSwitchDirection === PageSwitchDirection.DOWN && canvasContainer[0].scrollTop + getWindowHeight() >= canvasContainer[0].scrollHeight) ||
                                 (pageSwitchDirection === PageSwitchDirection.UP && canvasContainer[0].scrollTop == 0)) {
                                 var page = scope.pageToDisplay;
                                 scope.mouseScrollReset();
@@ -193,7 +194,8 @@
                                     left: '0',
                                     margin: '0px 10%',
                                     width: '80%',
-                                    height: '100%'
+                                    height: '100%',
+                                    'overflow-y': 'auto'
                                 });
                                 resequestFullScreen.call(canvasContainer[0]);
                             }
@@ -397,4 +399,5 @@
         };
     }]);
 })();
+
 

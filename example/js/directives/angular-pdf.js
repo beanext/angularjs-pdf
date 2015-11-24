@@ -174,6 +174,11 @@
                         var isInternalLink = (evt.target.href && evt.target.classList.contains('internalLink'));
                         if (!isInternalLink) {
                             evt.preventDefault();
+                            var page = parseInt(scope.pageToDisplay);
+                            if ((page === 1 && evt.shiftKey) ||
+                                (page === scope.pageCount && !evt.shiftKey)) {
+                                return;
+                            }
                             scope.pageToDisplay = parseInt(scope.pageToDisplay) + (evt.shiftKey ? -1 : 1);
                             scope.pageNum = scope.pageToDisplay;
                             scope.$apply();
